@@ -20,7 +20,8 @@ class _InputProduksiScreenState extends State<InputProduksiScreen> {
   void initState() {
     super.initState();
     // Validasi pencegahan eror jika master mesin kosong atau QR bernilai aneh
-    selectedMesin = widget.mesinIdFromQR ?? AppState.mesinList.first['id'].toString();
+    selectedMesin =
+        widget.mesinIdFromQR ?? AppState.mesinList.first['id'].toString();
     selectedKain = AppState.jenisKainList.first;
   }
 
@@ -34,7 +35,8 @@ class _InputProduksiScreenState extends State<InputProduksiScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Form Input Hasil Kain', style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white)),
+        title: const Text('Form Input Hasil Kain',
+            style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white)),
         backgroundColor: const Color(0xFF1E40AF),
         iconTheme: const IconThemeData(color: Colors.white),
       ),
@@ -45,11 +47,14 @@ class _InputProduksiScreenState extends State<InputProduksiScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Text('Mesin yang Digunakan', style: TextStyle(fontWeight: FontWeight.bold)),
+              const Text('Mesin yang Digunakan',
+                  style: TextStyle(fontWeight: FontWeight.bold)),
               const SizedBox(height: 8),
               DropdownButtonFormField<String>(
                 value: selectedMesin,
-                decoration: const InputDecoration(border: OutlineInputBorder(borderRadius: BorderRadius.all(Radius.circular(12)))),
+                decoration: const InputDecoration(
+                    border: OutlineInputBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(12)))),
                 items: AppState.mesinList.map<DropdownMenuItem<String>>((m) {
                   return DropdownMenuItem<String>(
                     value: m['id'].toString(),
@@ -59,13 +64,16 @@ class _InputProduksiScreenState extends State<InputProduksiScreen> {
                 onChanged: (v) => setState(() => selectedMesin = v!),
               ),
               const SizedBox(height: 20),
-              
-              const Text('Jenis Kain Produksi', style: TextStyle(fontWeight: FontWeight.bold)),
+              const Text('Jenis Kain Produksi',
+                  style: TextStyle(fontWeight: FontWeight.bold)),
               const SizedBox(height: 8),
               DropdownButtonFormField<String>(
                 value: selectedKain,
-                decoration: const InputDecoration(border: OutlineInputBorder(borderRadius: BorderRadius.all(Radius.circular(12)))),
-                items: AppState.jenisKainList.map<DropdownMenuItem<String>>((k) {
+                decoration: const InputDecoration(
+                    border: OutlineInputBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(12)))),
+                items:
+                    AppState.jenisKainList.map<DropdownMenuItem<String>>((k) {
                   return DropdownMenuItem<String>(
                     value: k,
                     child: Text(k),
@@ -74,28 +82,33 @@ class _InputProduksiScreenState extends State<InputProduksiScreen> {
                 onChanged: (v) => setState(() => selectedKain = v!),
               ),
               const SizedBox(height: 20),
-              
-              const Text('Berat Hasil Kain', style: TextStyle(fontWeight: FontWeight.bold)),
+              const Text('Berat Hasil Kain',
+                  style: TextStyle(fontWeight: FontWeight.bold)),
               const SizedBox(height: 8),
               TextFormField(
-                controller: _berat, 
-                decoration: const InputDecoration(labelText: 'Berat Kain (Kg)', border: OutlineInputBorder(borderRadius: BorderRadius.all(Radius.circular(12)))), 
+                controller: _berat,
+                decoration: const InputDecoration(
+                    labelText: 'Berat Kain (Kg)',
+                    border: OutlineInputBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(12)))),
                 keyboardType: TextInputType.number,
               ),
               const SizedBox(height: 20),
-              
               SwitchListTile(
-                title: const Text('Apakah Ada Cacat/Kerusakan pada Kain?', style: TextStyle(fontWeight: FontWeight.bold)), 
-                value: _isCacat, 
-                onChanged: (v) => setState(() => _isCacat = v)
-              ),
+                  title: const Text('Apakah Ada Cacat/Kerusakan pada Kain?',
+                      style: TextStyle(fontWeight: FontWeight.bold)),
+                  value: _isCacat,
+                  onChanged: (v) => setState(() => _isCacat = v)),
               const SizedBox(height: 40),
-              
               SizedBox(
                 width: double.infinity,
                 height: 50,
                 child: ElevatedButton(
-                  style: ElevatedButton.styleFrom(backgroundColor: const Color(0xFF1E40AF), foregroundColor: Colors.white, shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12))),
+                  style: ElevatedButton.styleFrom(
+                      backgroundColor: const Color(0xFF1E40AF),
+                      foregroundColor: Colors.white,
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(12))),
                   onPressed: () {
                     if (_formKey.currentState!.validate()) {
                       setState(() {
@@ -113,7 +126,9 @@ class _InputProduksiScreenState extends State<InputProduksiScreen> {
                       Navigator.pop(context);
                     }
                   },
-                  child: const Text('SIMPAN DATA KE PANEL', style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
+                  child: const Text('SIMPAN DATA KE PANEL',
+                      style:
+                          TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
                 ),
               ),
             ],
