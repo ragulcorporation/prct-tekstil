@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "971749839199",
+    "project_id": "prct-tekstil",
+    "storage_bucket": "prct-tekstil.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:971749839199:android:2751dac0c1ff0b349166ea",
+        "android_client_info": {
+          "package_name": "com.example.k_tech"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDnvqdU3DcJwICUza588AJUtYS3rFhTJy0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
