@@ -1,7 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:firebase_core/firebase_core.dart'; // WAJIB: Import inti Firebase
+import 'package:k_tech/firebase_options.dart';     // WAJIB: Kunci KTP Firebase Anda
 import 'package:k_tech/features/dashboard/presentation/screens/dashboard_screen.dart';
 
-void main() => runApp(const MyApp());
+// ==================== FUNGSI UTAMA (BOOTING) ====================
+void main() async {
+  // 1. Tahan aplikasi agar tidak langsung menggambar UI
+  WidgetsFlutterBinding.ensureInitialized();
+  
+  // 2. Nyalakan mesin Firebase sebelum aplikasi berjalan
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+
+  // 3. Setelah Firebase siap, baru jalankan aplikasi
+  runApp(const MyApp());
+}
 
 class MyApp extends StatefulWidget {
   const MyApp({super.key});
@@ -48,7 +62,7 @@ class _MyAppState extends State<MyApp> {
         ),
       ),
       
-      // ================= DARK THEME CONFIG (PREMIUM TEXTILE INDUSTRIAL) =================
+      // ================= DARK THEME CONFIG (PREMIUM INDUSTRIAL) =================
       darkTheme: ThemeData(
         useMaterial3: true,
         brightness: Brightness.dark,
@@ -57,69 +71,39 @@ class _MyAppState extends State<MyApp> {
           primary: const Color(0xFF3B82F6),   
           secondary: const Color(0xFF60A5FA), 
           surface: const Color(0xFF1E293B),   
+          // ignore: deprecated_member_use
           background: const Color(0xFF0F172A),
           brightness: Brightness.dark,
         ),
         scaffoldBackgroundColor: const Color(0xFF0F172A),
         cardTheme: const CardThemeData(
-          color: const Color(0xFF1E293B),
+          color: Color(0xFF1E293B),
           elevation: 0,
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(24))),
         ),
       ),
-      home: const DashboardScreen(), // Otomatis mengontrol fase Welcome di awal
+      home: const DashboardScreen(), 
     );
   }
 }
 
-// ================= GLOBAL STATE MES PABRIK KAIN KAHATEX STYLE =================
+// ================= GLOBAL STATE (CADANGAN LOKAL) =================
+// Catatan: Sebagian besar data ini sekarang sudah diambil alih oleh Firestore, 
+// tapi kita tetap pertahankan untuk mencegah error/crash pada saat loading awal.
 class AppState {
-  static bool isLoggedIn = false; 
-  static String currentWorker = "Tamu/Operator"; 
+  static bool isLoggedIn = false;
+  static String currentWorker = "Operator/Tamu";
+  
+  static List<Map<String, dynamic>> logProduksi = [];
 
-  // Master Data Karyawan Terregistrasi
-  static List<Map<String, String>> karyawanList = [
-    {'username': 'agha', 'nama': 'Agha Gha', 'pin': '1234'},
-    {'username': 'operator1', 'nama': 'Budi Santoso', 'pin': '0000'},
-  ];
-
-  // Master Data Mesin dengan Sektor Pabrik
   static List<Map<String, dynamic>> mesinList = [
-    {'id': 'MSN-01', 'nama': 'Mesin Rajut Circular A (Weaving Dept)', 'status': 'Produksi', 'terakhir_maintenance': DateTime(2026, 5, 12)},
-    {'id': 'MSN-02', 'nama': 'Mesin Rajut Circular B (Weaving Dept)', 'status': 'Standby', 'terakhir_maintenance': DateTime(2026, 5, 18)},
-    {'id': 'MSN-03', 'nama': 'Mesin Tenun Loom 01 (Knitting Dept)', 'status': 'Produksi', 'terakhir_maintenance': DateTime(2026, 4, 15)},
+    {'id': 'MSN-01', 'nama': 'Mesin Rajut Sektor A', 'status': 'Active', 'terakhir_maintenance': DateTime.now()},
   ];
 
-  // Master Data Jenis Kain Berkode Khusus & Warna Thread
-  static List<Map<String, String>> jenisKainList = [
-    {'kode': 'EIGER11', 'nama': 'Katun Combed', 'warna': 'Red'},
+  static List<Map<String, dynamic>> jenisKainList = [
     {'kode': 'EIGER11', 'nama': 'Katun Combed', 'warna': 'Blue'},
-    {'kode': 'POLY02', 'nama': 'Poliester Premium', 'warna': 'Black'},
+    {'kode': 'KHTX01', 'nama': 'Polyester Filament', 'warna': 'White'},
   ];
-
-  // Log Hasil Input Laporan Produksi
-  static List<Map<String, dynamic>> logProduksi = [
-    {
-      'tanggal': DateTime(2026, 5, 23),
-      'waktu': '14:32',
-      'shift': 'Shift 2',
-      'operator': 'Agha Gha', 
-      'mesin_id': 'MSN-01',   
-      'jenis_kain': 'EIGER11 - Red',
-      'berat': 83.5,
-      'status': 'Bagus',
-      'cacat': '',
-    },
-    {
-      'tanggal': DateTime(2026, 5, 23),
-      'waktu': '16:15',
-      'shift': 'Shift 2',
-      'operator': 'Agha Gha', 
-      'mesin_id': 'MSN-01',   
-      'jenis_kain': 'EIGER11 - Blue',
-      'berat': 103.5,
-      'status': 'Bagus',
-      'cacat': '',
-    },
-  ];
+  
+  static List<Map<String, String>> karyawanList = [];
 }

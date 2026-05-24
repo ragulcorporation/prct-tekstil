@@ -1,13 +1,13 @@
 {
   "project_info": {
-    "project_number": "971749839199",
-    "project_id": "prct-tekstil",
-    "storage_bucket": "prct-tekstil.firebasestorage.app"
+    "project_number": "768509672193",
+    "project_id": "prjct-tekstil",
+    "storage_bucket": "prjct-tekstil.firebasestorage.app"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:971749839199:android:2751dac0c1ff0b349166ea",
+        "mobilesdk_app_id": "1:768509672193:android:81916a45efe6704c617900",
         "android_client_info": {
           "package_name": "com.example.k_tech"
         }
@@ -15,7 +15,26 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyDnvqdU3DcJwICUza588AJUtYS3rFhTJy0"
+          "current_key": "AIzaSyDVYlyG_156Slh2nvIS2skEDI3-gmmyi2E"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:768509672193:android:f75fb3ab9432042c617900",
+        "android_client_info": {
+          "package_name": "com.ragul.ktech"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDVYlyG_156Slh2nvIS2skEDI3-gmmyi2E"
         }
       ],
       "services": {

@@ -21,6 +21,17 @@ class AuthService {
       return userCredential;
     } on FirebaseAuthException catch (e) {
       // Menangkap error spesifik dari Firebase (misal: password salah)
+      // Fungsi untuk mendaftarkan operator baru ke Firebase Auth
+  Future<UserCredential> registerDenganEmail({required String email, required String password}) async {
+    try {
+      return await FirebaseAuth.instance.createUserWithEmailAndPassword(
+        email: email,
+        password: password,
+      );
+    } catch (e) {
+      throw Exception('Gagal registrasi: $e');
+    }
+  }
       if (e.code == 'user-not-found') {
         throw Exception('Email tidak terdaftar di sistem pabrik.');
       } else if (e.code == 'wrong-password') {

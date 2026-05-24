@@ -17,17 +17,29 @@ import 'package:flutter/foundation.dart'
 class DefaultFirebaseOptions {
   static FirebaseOptions get currentPlatform {
     if (kIsWeb) {
-      return web;
+      throw UnsupportedError(
+        'DefaultFirebaseOptions have not been configured for web - '
+        'you can reconfigure this by running the FlutterFire CLI again.',
+      );
     }
     switch (defaultTargetPlatform) {
       case TargetPlatform.android:
         return android;
       case TargetPlatform.iOS:
-        return ios;
+        throw UnsupportedError(
+          'DefaultFirebaseOptions have not been configured for ios - '
+          'you can reconfigure this by running the FlutterFire CLI again.',
+        );
       case TargetPlatform.macOS:
-        return macos;
+        throw UnsupportedError(
+          'DefaultFirebaseOptions have not been configured for macos - '
+          'you can reconfigure this by running the FlutterFire CLI again.',
+        );
       case TargetPlatform.windows:
-        return windows;
+        throw UnsupportedError(
+          'DefaultFirebaseOptions have not been configured for windows - '
+          'you can reconfigure this by running the FlutterFire CLI again.',
+        );
       case TargetPlatform.linux:
         throw UnsupportedError(
           'DefaultFirebaseOptions have not been configured for linux - '
@@ -40,49 +52,11 @@ class DefaultFirebaseOptions {
     }
   }
 
-  static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyB0hJi04iuKN8bWm2fZrjD_EMfY1QAlh-E',
-    appId: '1:971749839199:web:abcf5b8aec8921969166ea',
-    messagingSenderId: '971749839199',
-    projectId: 'prct-tekstil',
-    authDomain: 'prct-tekstil.firebaseapp.com',
-    storageBucket: 'prct-tekstil.firebasestorage.app',
-    measurementId: 'G-3WQQ5C0E2Q',
-  );
-
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyDnvqdU3DcJwICUza588AJUtYS3rFhTJy0',
-    appId: '1:971749839199:android:2751dac0c1ff0b349166ea',
-    messagingSenderId: '971749839199',
-    projectId: 'prct-tekstil',
-    storageBucket: 'prct-tekstil.firebasestorage.app',
-  );
-
-  static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyChwLb3umjPEavEc5UBggOnzVV-pM93Y7w',
-    appId: '1:971749839199:ios:46c8ebcd9a93363d9166ea',
-    messagingSenderId: '971749839199',
-    projectId: 'prct-tekstil',
-    storageBucket: 'prct-tekstil.firebasestorage.app',
-    iosBundleId: 'com.example.kTech',
-  );
-
-  static const FirebaseOptions macos = FirebaseOptions(
-    apiKey: 'AIzaSyChwLb3umjPEavEc5UBggOnzVV-pM93Y7w',
-    appId: '1:971749839199:ios:46c8ebcd9a93363d9166ea',
-    messagingSenderId: '971749839199',
-    projectId: 'prct-tekstil',
-    storageBucket: 'prct-tekstil.firebasestorage.app',
-    iosBundleId: 'com.example.kTech',
-  );
-
-  static const FirebaseOptions windows = FirebaseOptions(
-    apiKey: 'AIzaSyB0hJi04iuKN8bWm2fZrjD_EMfY1QAlh-E',
-    appId: '1:971749839199:web:0bab91fc9fcd90299166ea',
-    messagingSenderId: '971749839199',
-    projectId: 'prct-tekstil',
-    authDomain: 'prct-tekstil.firebaseapp.com',
-    storageBucket: 'prct-tekstil.firebasestorage.app',
-    measurementId: 'G-XRFYL61KZD',
+    apiKey: 'AIzaSyDVYlyG_156Slh2nvIS2skEDI3-gmmyi2E',
+    appId: '1:768509672193:android:81916a45efe6704c617900',
+    messagingSenderId: '768509672193',
+    projectId: 'prjct-tekstil',
+    storageBucket: 'prjct-tekstil.firebasestorage.app',
   );
 }
